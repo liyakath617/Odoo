@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_waiter,access_waiter,model_waiter,base.group_user,1,1,1,1
+access_waiter_chef,access_waiter_chef,model_waiter,restaurant.group_chef,1,1,1,1
+access_waiter_line,access_waiter_line,model_waiter_line,base.group_user,1,1,1,1
+access_sale_order_wizard,access_sale_order_wizard,model_sale_order_wizard,base.group_user,1,1,1,1
+access_sale_wizard_line,access_sale_wizard_line,model_sale_wizard_line,base.group_user,1,1,1,1
