@@ -1,0 +1,116 @@
+<odoo>
+	<data>
+		<template id="report_zesty_beanz">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="web.external_layout">
+						<div class="page">
+							<h2>Q-Web Bill Report</h2>
+							<br />
+							<table style="width: 100%;">
+								<tr>
+									<!-- Centered Restaurant Name -->
+									<td style="text-align: center;">
+										<h2 style="color: red;">ABC Restaurant</h2>
+									</td>
+									<!-- Right-Aligned Date -->
+									<td
+										style="text-align: right; vertical-align: top;">
+										<span
+											t-esc="datetime.date.today().strftime('%Y-%m-%d')" />
+									</td>
+									<tr>
+									<td>
+									<p style="text-align: center; text-decoration: underline;">CASH BILL</p>
+									</td>
+								</tr>
+								</tr>
+							</table>
+
+							
+							
+							<div class="invoice_info">
+								<p>
+									<strong>Customer Name :</strong>
+									<span t-field="o.partner_id.name" />
+								</p>
+								<p>
+									<strong>Email :</strong>
+									<span t-field="o.email" />
+								</p>
+								<p>
+									<strong>Phone Number :</strong>
+									<span t-field="o.sale_ph_no" />
+								</p>
+							</div>
+
+							
+							<table class="table table-sm o_main_table">
+								<thead>
+									<tr style="border: 1px solid black;">
+										<t />
+										<th style="border: 1px solid black;"
+											name="th_item_no" class="text-left">
+											<span>Item</span>
+										</th>
+										<th style="border: 1px solid black;"
+											name="th_item_code"
+											class="text-left">
+											<span>Qty</span>
+										</th>
+										<th style="border: 1px solid black;"
+											name="th_item_code"
+											class="text-left">
+											<span>Unit Price</span>
+										</th>
+										<th style="border: 1px solid black;"
+											name="th_item_code"
+											class="text-left">
+											<span>Sub Total</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody class="invoice_tbody">
+									<t t-set="Sl_No" t-value="1" />
+									<t t-foreach="o.order_line" t-as="line">
+										<tr>
+											<td style="border:1px solid black">
+												<span
+													t-field="line.product_id.name" />
+											</td>
+											<td style="border:1px solid black">
+												<span
+													t-field="line.product_uom_qty" />
+											</td>
+											<td style="border:1px solid black">
+												<span t-field="line.price_unit" />
+											</td>
+											<td style="border:1px solid black">
+												<span
+													t-field="line.price_subtotal" />
+											</td>
+										</tr>
+									</t>
+									<tr>
+										<td colspan="3"
+											style="text-align: right; border:1px solid black; font-weight: bold;">
+											Total
+										</td>
+										<td
+											style="border:1px solid black; font-weight: bold;">
+											<span
+												t-esc="sum(line.price_subtotal for line in o.order_line)" />
+										</td>
+									</tr>
+								</tbody>
+
+							</table>
+							
+							
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

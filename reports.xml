@@ -1,0 +1,26 @@
+<odoo>
+	<!-- qweb report -->
+	<record id="action_report_zesty_beanz" model="ir.actions.report">
+		<field name="name">Q-Web Report</field>
+		<field name="model">sale.order</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">restaurant.report_zesty_beanz</field>
+		<field name="report_file">restaurant.report_zesty_beanz</field>
+		<field name="binding_model_id" ref="model_sale_order" />
+	</record>
+	
+	
+	 <!--xlsx report-->
+	
+	<record id="action_report_order_xlsx" model="ir.actions.report">
+		<field name="name">Order Bills XLSX</field>
+		<field name="model">sale.order</field>
+		<field name="report_type">xlsx</field>
+		<field name="report_name">restaurant.report_order</field>
+		<field name="report_file">restaurant.report_order</field>
+		<field name="binding_model_id" ref="model_sale_order"/>
+		<field name="binding_type">report</field>
+	</record>
+	
+</odoo>
+
